@@ -1,4 +1,4 @@
-// Create a "close" button and append it to each list item 
+// Poisto napin teko ja lisäys jokaiseen kohtaan. 
 var kauppaLista = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < kauppaLista.length; i++) {
@@ -9,7 +9,7 @@ for (i = 0; i < kauppaLista.length; i++) {
     kauppaLista[i].appendChild(span);
 }
 
-// Click on a close button to hide the current list item. Klikkaa ruksia poistaaksesi tuotteen
+// Klikkaa ruksia poistaaksesi tuotteen.. Yritin lisätä poiston localStorageen, mutta en onnistunut siinä.
 var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
@@ -19,7 +19,7 @@ for (i = 0; i < close.length; i++) {
     }
 }
 
-// Add a "checked" symbol when clicking on a list item. Lisää merkkauksen jo löydetylle/otetulle tuotteelle
+// Lisää merkkauksen jo löydetylle/otetulle tuotteelle
 var list = document.querySelector('ul');
 list.addEventListener('click', function (ev) {
     if (ev.target.tagName === 'LI') {
@@ -27,7 +27,7 @@ list.addEventListener('click', function (ev) {
     }
 }, false);
 
-// Create a new list item when clicking on the "Add" button. Lisätää tavaraa listaan
+// Lisätää tavaraa listaan ja localStroageen. näyttää vähän huonolta mutta ei voi mitään....
 function uusiTuote() {
     var li = document.createElement("li");
     var inputValue = document.getElementById("myInput").value;
@@ -37,6 +37,7 @@ function uusiTuote() {
         alert("Et lisännyt mitään, lisää jotain kauppalistaan kirjoittamlalla ruutuun.");
     } else {
         document.getElementById("lisTa").appendChild(li);
+        localStorage.setItem("kauppaLista", document.getElementById("lisTa").innerText);
     }
     document.getElementById("myInput").value = "";
 
@@ -45,7 +46,7 @@ function uusiTuote() {
     span.className = "close";
     span.appendChild(txt);
     li.appendChild(span);
-    localStorage.setItem("inputValue", JSON.stringify(inputValue));
+
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
             var div = this.parentElement;
@@ -55,3 +56,4 @@ function uusiTuote() {
 
 
 }
+
