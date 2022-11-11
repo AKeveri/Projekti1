@@ -101,7 +101,7 @@ ul li:before {
     border-radius: 2em;
     transition: all .3s ease-out;
 }
-
+/* Ei toimi kunnolla */
 ul li.checked::before {
     content: '';
     position: absolute;
